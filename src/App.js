@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Banner from './components/Banner/Banner';
+import Footer from './components/Footer/Footer';
+import Form from './components/Form/Form';
+import Group from './components/Group/Group';
 
 function App() {
+
+  const positions = [
+    { name: 'Goleiro', group: 'Goleiros' },
+    { name: 'Zagueiro', group: 'Zagueiros' },
+    { name: 'Lateral', group: 'Laterais' },
+    { name: 'Meio-campo', group: 'Meio-campistas' },
+    { name: 'Extremo', group: 'Extremos' },
+    { name: 'Atacante', group: 'Atacantes' }
+  ]
+
+  const [players, setPlayers] = useState([]);
+
+  const onRegisterNewPlayer = (player) => {
+    setPlayers([...players, player]);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Banner />
+      <Form
+        positions={positions.map(position => position.name)}
+        onRegisterPlayer={player => onRegisterNewPlayer(player)}
+      />
+      {
+        positions.map(position =>
+          <Group
+            key={position.name}
+            name={position.name}
+            group={position.group}
+            players={players.filter(player => player.group === position.name)}
+          />
+        )
+      }
+      <Footer />
     </div>
   );
 }
