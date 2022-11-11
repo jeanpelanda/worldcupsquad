@@ -11,7 +11,6 @@ function App() {
     { name: 'Zagueiro', group: 'Zagueiros' },
     { name: 'Lateral', group: 'Laterais' },
     { name: 'Meio-campo', group: 'Meio-campistas' },
-    { name: 'Extremo', group: 'Extremos' },
     { name: 'Atacante', group: 'Atacantes' }
   ]
 

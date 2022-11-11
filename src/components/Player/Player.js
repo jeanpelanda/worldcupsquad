@@ -6,12 +6,12 @@ const Player = (props) => {
 
     return (
         <div className='player'>
-            <div className='header'>
+            <div className='top'>
                 <picture>
                     <img src={player.image} alt={player.name} />
                 </picture>
             </div>
-            <div className='footer'>
+            <div className='bottom'>
                 <h4>{player.name}</h4>
                 <h5>{player.role}</h5>
             </div>
